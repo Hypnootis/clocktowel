@@ -17,13 +17,16 @@ pygame.display.set_caption("Testing") #Title for the game window
 running = True
 
 class Object():
-    def __init__(self):
+    def __init__(self, surf):
+        self.x = 0
+        self.y = 0
+        self.surf = surf
         self.image = pygame.image.load("assets/sprites/example.png")
-    def draw(self, surface):
-        self.blit(surface, self.image, (self.x, self.y))
+    def draw(self, surf):
+        self.surf.blit(self.image, [self.x, self.y])
 
 lista = []
-paska = Object()
+paska = Object(screen)
 
 while running:
     
