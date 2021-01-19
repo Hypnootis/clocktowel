@@ -1,0 +1,20 @@
+{
+    "name" : "testRoom",
+    "image" : "testRoom.png",
+    "objects": {
+        "example1" : {
+           "x" : 0,
+           "y" : 0,
+           "image" : "example1.png",
+           "type" : "pickup",
+           "inspect" : "How do I look?"
+        },
+        "example2" : {
+            "x" : 0,
+            "y" : 0,
+            "image" : "example2.png",
+            "type" : "npc",
+            "inspect" : "What'cha looking at?"
+        }
+    }
+}

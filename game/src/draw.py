@@ -1,6 +1,18 @@
 import pygame
+from classes import *
+from load import *
 
-def text(surface, text, size, (x, y), color=""):
+drawablesList = []
+
+def createDrawables(l, currentRoom, surface):
+    for room in l:
+        room = Object(l[room]["image"], "", 0, 0)
+        drawablesList.append(room)
+        #for obj in l[room]["objects"]:
+        #    obj = Object(surface, l[room][obj]["image"], l[room][obj]["inspect"], l[room][obj]["x"], l[room][obj]["y"])
+        #    drawablesList.append(obj)
+
+def text(surface, text, size, x, y, color=""):
     font = pygame.font.Font(os.path.join("..assets/fonts", "YuseiMagic-Regular.ttf"), size)
     if color == "":
         color = pygame.Color("black")
@@ -11,7 +23,6 @@ def text(surface, text, size, (x, y), color=""):
     text_rect.x = x
     surf.blit(text_surface, (x, y))
 
-def drawObject(Object, surface):
-    obj = Object()
-    obj.image.load(os.path.join(obj.image)).convert_alpha()
-    obj.blit(surface, x.image, (obj.x, obj.y))
+def drawGame(drawablesList, surface):
+    for obj in drawablesList:
+        obj.draw(surface)

@@ -1,16 +1,30 @@
-import pygame, draw
+import pygame
 
-class Object(pygame.sprite.Sprite):
-    def __init__(self, surf, picture=""):
-        self.surf = surf
-        self.image = pygame.image.load(os.path.join("../assets/sprites", self.picture)).convert_alpha()
-        self.rect = self.image.get_rect()
-        self.rect.center = (self.x, self.y)
-    def draw():
+class Object():
+    def __init__(self, picture, inspect, x, y):
+        self.x = x
+        self.y = y
+        self.picture = picture
+        self.inspect = inspect
+        self.image = pygame.image.load("assets/sprites/" + self.picture)
+    def draw(self, surf):
+        surf.blit(self.image, [self.x, self.y])
+    #def inspect(self, inspect, surf):
+        #text(self.surf, self.inspect, 12, (self.x, self.y + 50), pygame.Color("black"))
         
 
-class Room()
+class Npc(Object):
+    def __init__(self):
+        self.dialog = True
 
-class State()
+class Pickup(Object):
+    def __init__(self):
+        self.picked = False
 
-class Game()
+class Room(Object):
+    def __init__(self, picture, inspect, x, y):
+        super().__init__(self, picture, inspect, x, y)
+        self.picture = picture
+        self.inspect = inspect
+        self.x = x
+        self.y = y
