@@ -1,5 +1,6 @@
 import pygame, os, json
 from draw import *
+from state import *
 
 pygame.init()
 
@@ -10,13 +11,22 @@ pygame.display.set_caption("Clock Towel")
 clock = pygame.time.Clock()
 
 running = True
-createDrawables(rooms, "testRoom", screen)
+changeRoom = False
+createDrawables(rooms, currentRoom)
 
 while running:
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 running = False
+            elif event.key == pygame.K_SPACE:
+                changeRoom = True
+ 
+    
+    if changeRoom == True:
+        currentRoom = nextRoom
+        createDrawables(rooms, currentRoom)
+        changeRoom = False
     
     drawGame(drawablesList, screen)
 

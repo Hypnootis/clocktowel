@@ -5,9 +5,9 @@ import random
 import json
 from load import *
 
-for i in range(len(roomNameList)):
-    print(rooms[roomNameList[i].replace(".json", "")])
-    print(rooms[roomNameList[i].replace(".json", "")]["objects"])
+for i in rooms:
+    for j in rooms[i]["objects"]:
+        print(rooms[i]["objects"][j]["image"])
 
 #pygame.init()
 

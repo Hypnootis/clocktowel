@@ -1,6 +1,6 @@
 {
-    "name" : "testRoom",
-    "image" : "testRoom.png",
+    "name" : "testRoom2",
+    "image" : "testRoom2.png",
     "objects": {
         "example1" : {
            "x" : 200,
