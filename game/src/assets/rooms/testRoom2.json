@@ -1,6 +1,7 @@
 {
     "name" : "testRoom2",
     "image" : "testRoom2.png",
+    "type" : "room",
     "objects": {
         "example1" : {
            "x" : 200,
