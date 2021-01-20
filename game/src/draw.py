@@ -3,11 +3,12 @@ from classes import *
 from load import *
 
 drawablesList = []
+drawablesBackground = []
 
 def createDrawables(l, currentRoom, surface):
     for room in l:
         room = Object(l[room]["image"], "", 0, 0)
-        drawablesList.append(room)
+        drawablesBackground.append(room)
         #for obj in l[room]["objects"]:
         #    obj = Object(surface, l[room][obj]["image"], l[room][obj]["inspect"], l[room][obj]["x"], l[room][obj]["y"])
         #    drawablesList.append(obj)

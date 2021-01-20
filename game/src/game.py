@@ -10,14 +10,14 @@ pygame.display.set_caption("Clock Towel")
 clock = pygame.time.Clock()
 
 running = True
+createDrawables(rooms, "testRoom", screen)
 
 while running:
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
-                pygame.running = False
+                running = False
     
-    createDrawables(rooms, "testRoom", screen)
     drawGame(drawablesList, screen)
 
     pygame.display.flip()
