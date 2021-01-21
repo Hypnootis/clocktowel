@@ -12,7 +12,7 @@ def createDrawables(l, currentRoom):
         room = Object(l[currentRoom]["image"], "", 0, 0, l[currentRoom]["type"])
         objects.append(room)
         for obj in l[currentRoom]["objects"]:
-            obj = Object(l[currentRoom]["objects"][obj]["image"], l[currentRoom]["objects"][obj]["inspect"], l[currentRoom]["objects"][obj]["x"], l[currentRoom]["objects"][obj]["y"], l[currentroom]["objects"][obj]["type"])
+            obj = Object(l[currentRoom]["objects"][obj]["image"], l[currentRoom]["objects"][obj]["inspect"], l[currentRoom]["objects"][obj]["x"], l[currentRoom]["objects"][obj]["y"], l[currentRoom]["objects"][obj]["type"])
             objects.append(obj)
 
 def text(surface, text, size, x, y, color=""):

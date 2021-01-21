@@ -1,4 +1,4 @@
-import pygame, os, json
+import pygame, os, json, time
 from draw import *
 from state import *
 
@@ -13,10 +13,16 @@ clock = pygame.time.Clock()
 running = True
 changeRoom = False
 createDrawables(rooms, currentRoom)
-clicked = []
+prev_time = time.time()
+dt = 0
 
 while running:
-    mousePos = pygame.mouse.get_pos()
+
+    #Delta time
+    now = time.time()
+    dt = now - prev_time
+    prev_time = now
+
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
@@ -25,17 +31,16 @@ while running:
                 changeRoom = True
             elif event.key == pygame.K_m:
                 playerStats["flags"]["puzzle1"] = True
-        elif event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[0]:
-            print("clicked!")
-            for s in objects:
-                if s.rect.collidepoint(mousePos) and s.type != "room":
-                    clicked.append(s)
-        elif event.type == pygame.MOUSEBUTTONUP:
-            clicked = []
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                for i in objects:
+                    if i.rect.collidepoint(event.pos) and i.type != "room":
+                        print("Clicked!")
+            elif event.button == 2:
+                for i in objects:
+                    if i.rect.collidepoint(event.pos) and i.type != "room":
+                        i.inspect()
     
-    if clicked != []:
-        print(clicked)
-                
  
     
     if changeRoom == True:
