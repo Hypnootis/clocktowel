@@ -15,16 +15,16 @@ def createDrawables(l, currentRoom):
             obj = Object(l[currentRoom]["objects"][obj]["image"], l[currentRoom]["objects"][obj]["inspect"], l[currentRoom]["objects"][obj]["x"], l[currentRoom]["objects"][obj]["y"], l[currentRoom]["objects"][obj]["type"])
             objects.append(obj)
 
-def text(surface, text, size, x, y, color=""):
-    font = pygame.font.Font(os.path.join("..assets/fonts", "YuseiMagic-Regular.ttf"), size)
+def drawText(font, text, x, y, color=""): #Surf is the surface you want to draw the text onto, then some basic parameters like what kind of text you want to draws
     if color == "":
-        color = pygame.Color("black")
+        color = pygame.Color("black") #If no color is specified, use black
     else:
         color = color
     text_surface = font.render(text, True, color)
     text_rect = text_surface.get_rect()
     text_rect.x = x
-    surf.blit(text_surface, (x, y))
+    return text_surface
+
 
 #Draws all the objects in the list of drawable objects
 
