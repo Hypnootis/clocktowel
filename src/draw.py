@@ -2,18 +2,16 @@ import pygame
 from classes import *
 from load import *
 
-objects = []
-
 #This messy function goes through the json room file, then gets the objects from the current room
 #and adds them to a list
 
-def createDrawables(l, currentRoom):
+def createDrawables(l, objectl, currentRoom):
     for room in l:
         room = Object(l[currentRoom]["image"], "", 0, 0, l[currentRoom]["type"])
-        objects.append(room)
+        objectl.append(room)
         for obj in l[currentRoom]["objects"]:
             obj = Object(l[currentRoom]["objects"][obj]["image"], l[currentRoom]["objects"][obj]["inspect"], l[currentRoom]["objects"][obj]["x"], l[currentRoom]["objects"][obj]["y"], l[currentRoom]["objects"][obj]["type"])
-            objects.append(obj)
+            objectl.append(obj)
 
 def drawText(font, text, x, y, color=""): #Surf is the surface you want to draw the text onto, then some basic parameters like what kind of text you want to draws
     if color == "":
@@ -28,6 +26,6 @@ def drawText(font, text, x, y, color=""): #Surf is the surface you want to draw 
 
 #Draws all the objects in the list of drawable objects
 
-def drawGame(objects, surface):
-    for obj in objects:
+def drawGame(objectl, surface):
+    for obj in objectl:
         obj.draw(surface)

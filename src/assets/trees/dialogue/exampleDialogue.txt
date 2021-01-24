@@ -1,0 +1,13 @@
+root{
+speech{
+player say "Would you like some tea?"
+npc say "What?"
+}
+branch "opener":{
+1 player "Are you deaf?"->npc say "No, just a really odd question to randomly ask someone"
+2 player "Nevermind, goodbye"-> close;
+
+}
+}
+
+I'm pretty sure each object could have their own dialog
