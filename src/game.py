@@ -13,13 +13,14 @@ clock = pygame.time.Clock()
 running = True
 changeRoom = False
 createDrawables(rooms, currentRoom)
-prev_time = time.time()
 dt = 0
-font = pygame.font.Font("assets/fonts/YuseiMagic-Regular.ttf", 25)
+font = pygame.font.Font("assets/fonts/YuseiMagic-Regular.ttf", 20)
 cooldown = 7000
 pos = (0, 0)
 text = ""
-textList = {}
+textList = []
+textPosList = []
+
 while running:
 
     #Delta time
@@ -42,11 +43,13 @@ while running:
                     if i.rect.collidepoint((event.pos)) and i.type != "room":
                         break
             elif event.button == 3:
-                for i in objects:
+                for i in objects: #This is so dirty, but I could not think of a better way right now
                     if i.rect.collidepoint(event.pos) and i.type != "room":
-                        #textList.append(draw_text(font, i.inspectText, i.x, i.y + 20, pygame.Color("yellow")))
                         text = drawText(font, i.inspectText, i.x, i.y, pygame.Color("yellow"))
-                        pos = (i.x, i.y)
+                        textPos = (i.x, i.y)
+                        if text not in textList and textPos not in textPosList: #I have two lists that store text_surface Object and coordinates
+                            textList.append(text)
+                            textPosList.append((i.x, i.y))
                         break
     
  
@@ -54,12 +57,15 @@ while running:
     if changeRoom == True:
         currentRoom = nextRoom
         createDrawables(rooms, currentRoom)
+        textList = []
         changeRoom = False
     
     screen.fill(pygame.Color("red"))
-    drawGame(objects, screen)
-    if text != "":
-        screen.blit(text, (pos))
+    drawGame(objects, screen) #Abstracted my blits to this, look at draw.py for details
+
+
+    for i in range(len(textList)):
+        screen.blit(textList[i], (textPosList[i][0] - 50, textPosList[i][1] - 30)) #Offset is hardcoded, and doesn't have any boundaries
 
     pygame.display.flip()
     clock.tick(60)

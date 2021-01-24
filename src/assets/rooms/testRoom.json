@@ -11,8 +11,8 @@
            "inspect" : "How do I look?"
         },
         "example2" : {
-            "x" : 20,
-            "y" : 40,
+            "x" : 500,
+            "y" : 100,
             "image" : "example2.png",
             "type" : "npc",
             "inspect" : "What'cha looking at?"
